@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로또 6/45 행운의 번호 추첨기 | AI & 프리미엄 분석기</title>
-    <meta name="description" content="AI 번호 추천, 제외수/고정수 설정, 통계 분석을 제공하는 프리미엄 로또 6/45 추첨 사이트입니다.">
+    <meta name="description" content="AI 번호 추천, 제외수/고정수 설정, 통계 분석 및 비즈니스 제휴 문의를 제공하는 로또 6/45 추첨 사이트입니다.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +35,9 @@
                     <span class="legend-item ball-31-40">31~40</span>
                     <span class="legend-item ball-41-45">41~45</span>
                 </div>
+                <button class="btn btn-sm btn-secondary ml-10" id="btn-open-partner-modal">
+                    🤝 제휴 문의
+                </button>
             </div>
         </header>
 
@@ -167,6 +170,68 @@
                 </div>
             </section>
         </main>
+
+        <!-- Inline Formspree Partnership Inquiry Section -->
+        <section class="glass-card partner-section mt-25" id="partner-section">
+            <div class="card-title-row">
+                <div>
+                    <h2>🤝 제휴 및 비즈니스 문의</h2>
+                    <p class="subtitle">마케팅, 서비스 제휴, 개발 문의 등 제휴 요청을 보내주시면 담당자가 확인 후 답변드립니다.</p>
+                </div>
+                <span class="tag-badge accent">Formspree 연동</span>
+            </div>
+
+            <form id="partner-form" action="https://formspree.io/f/mojodgve" method="POST" class="partner-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="partner-name">담당자 성함 <span class="required">*</span></label>
+                        <input type="text" id="partner-name" name="name" class="modern-input" placeholder="홍길동" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partner-company">회사 / 소속명 <span class="required">*</span></label>
+                        <input type="text" id="partner-company" name="company" class="modern-input" placeholder="(주) 에이아이랩" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partner-email">이메일 주소 <span class="required">*</span></label>
+                        <input type="email" id="partner-email" name="email" class="modern-input" placeholder="contact@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partner-phone">연락처</label>
+                        <input type="tel" id="partner-phone" name="phone" class="modern-input" placeholder="010-1234-5678">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="partner-category">제휴 유형 <span class="required">*</span></label>
+                        <select id="partner-category" name="category" class="modern-select full-width-select" required>
+                            <option value="마케팅/광고 제휴">📢 마케팅 / 광고 제휴</option>
+                            <option value="서비스/콘텐츠 제휴">🤝 서비스 / 콘텐츠 제휴</option>
+                            <option value="개발/기술 제휴">💻 개발 / 기술 제휴</option>
+                            <option value="기타 문의">💡 기타 문의</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="partner-message">제휴 문의 내용 <span class="required">*</span></label>
+                        <textarea id="partner-message" name="message" class="modern-textarea" placeholder="제휴 내용 및 제안 사항을 상세히 작성해 주세요." required></textarea>
+                    </div>
+                </div>
+
+                <!-- Formspree ID Info -->
+                <div class="formspree-config-bar">
+                    <span class="status-dot green"></span>
+                    <span class="endpoint-label">Formspree 라이브 연동: <strong>https://formspree.io/f/mojodgve</strong></span>
+                </div>
+
+                <div class="form-footer align-right mt-15">
+                    <button type="submit" class="btn btn-primary" id="btn-submit-partner">
+                        <span>📤 제휴 문의 보내기</span>
+                    </button>
+                </div>
+            </form>
+        </section>
     </div>
 
     <!-- Toast Notification -->

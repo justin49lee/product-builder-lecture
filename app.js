@@ -312,6 +312,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Formspree Partnership Form Handler
+    const partnerForm = document.getElementById('partner-form');
+    const btnOpenPartner = document.getElementById('btn-open-partner-modal');
+
+    if (btnOpenPartner) {
+        btnOpenPartner.addEventListener('click', () => {
+            const target = document.getElementById('partner-section');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('partner-name')?.focus();
+            }
+        });
+    }
+
+    if (partnerForm) {
+        partnerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('btn-submit-partner');
+            const originalBtnHTML = submitBtn.innerHTML;
+
+            const endpoint = partnerForm.getAttribute('action');
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>⏳ 전송 중...</span>';
+
+            const formData = new FormData(partnerForm);
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showToast('제휴 문의가 성공적으로 전송되었습니다! ✉️');
+                    partnerForm.reset();
+                } else {
+                    const data = await response.json();
+                    if (data && data.errors) {
+                        showToast(`전송 오류: ${data.errors.map(err => err.message).join(', ')}`);
+                    } else {
+                        showToast('전송 중 오류가 발생했습니다. 다시 시도해 주세요.');
+                    }
+                }
+            } catch (err) {
+                console.error(err);
+                showToast('네트워크 오류가 발생했습니다. 다시 시도해 주세요.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHTML;
+            }
+        });
+    }
+
     // Toast Notification System
     function showToast(msg) {
         const toast = document.getElementById('toast');
