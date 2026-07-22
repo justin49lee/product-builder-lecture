@@ -1,269 +1,326 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // State Management
-    let tasks = JSON.parse(localStorage.getItem('nova_tasks')) || [
-        { id: 1, title: 'Antigravity 웹 앱 디자인 검토', category: '디자인', completed: true },
-        { id: 2, title: 'Vite & React 템플릿 테스트 실행', category: '개발', completed: true },
-        { id: 3, title: '새로운 대시보드 위젯 컴포넌트 추가', category: '개발', completed: false },
-        { id: 4, title: '사용자 가이드 및 설명 문서 작성', category: '기획', completed: false }
-    ];
+    // State
+    let fixedNumbers = new Set();
+    let excludedNumbers = new Set();
+    let generatedGames = [];
+    let savedFavorites = JSON.parse(localStorage.getItem('lotto_favorites')) || [];
+    let numberFrequency = {};
 
-    let notes = JSON.parse(localStorage.getItem('nova_notes')) || [
-        { id: 1, title: '아이디어 구상', content: '실시간 데이터 시각화 차트에 애니메이션 추가하기.', date: '2026-07-22' },
-        { id: 2, title: '개발 체크리스트', content: '1. UI 테마 스위처 테스트\n2. LocalStorage 데이터 저장 테스트', date: '2026-07-21' }
-    ];
-
-    let currentNoteId = notes.length > 0 ? notes[0].id : null;
-    let currentFilter = 'all';
-
-    // Elements
-    const navItems = document.querySelectorAll('.nav-item');
-    const views = document.querySelectorAll('.view');
-    const themeBtns = document.querySelectorAll('.theme-btn');
-    const clockTime = document.getElementById('clock-time');
-    const clockDate = document.getElementById('clock-date');
-
-    // Live Clock
-    function updateClock() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        clockTime.textContent = `${hours}:${minutes}:${seconds}`;
-
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const days = ['일', '월', '화', '수', '목', '금', '토'];
-        const dayName = days[now.getDay()];
-        clockDate.textContent = `${year}.${month}.${day} (${dayName})`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // Tab Navigation
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const targetTab = item.getAttribute('data-tab');
-            navItems.forEach(n => n.classList.remove('active'));
-            views.forEach(v => v.classList.remove('active'));
-
-            item.classList.add('active');
-            document.getElementById(`view-${targetTab}`).classList.add('active');
-        });
-    });
-
-    document.getElementById('dash-see-all')?.addEventListener('click', () => {
-        document.querySelector('[data-tab="tasks"]').click();
-    });
-
-    // Theme Switcher
-    themeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const theme = btn.getAttribute('data-theme');
-            document.body.className = theme;
-            themeBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-
-    // Tasks Management
-    function saveTasks() {
-        localStorage.setItem('nova_tasks', JSON.stringify(tasks));
-        renderTasks();
+    for (let i = 1; i <= 45; i++) {
+        numberFrequency[i] = 0;
     }
 
-    function renderTasks() {
-        const dashTaskList = document.getElementById('dash-task-list');
-        const fullTaskList = document.getElementById('full-task-list');
-        const dashCompletedCount = document.getElementById('dash-completed-count');
+    // Color range mapping helper
+    function getBallColorClass(num) {
+        if (num >= 1 && num <= 10) return 'ball-1-10';
+        if (num >= 11 && num <= 20) return 'ball-11-20';
+        if (num >= 21 && num <= 30) return 'ball-21-30';
+        if (num >= 31 && num <= 40) return 'ball-31-40';
+        return 'ball-41-45';
+    }
 
-        const completedCount = tasks.filter(t => t.completed).length;
-        if (dashCompletedCount) {
-            dashCompletedCount.textContent = `${completedCount} / ${tasks.length}`;
+    // Create Ball HTML
+    function createBallHTML(num, sizeClass = '') {
+        const colorClass = getBallColorClass(num);
+        return `<div class="lotto-ball ${colorClass} ${sizeClass}">${num}</div>`;
+    }
+
+    // Initialize Chamber Animation Balls
+    function initChamber() {
+        const chamber = document.getElementById('chamber-balls');
+        if (!chamber) return;
+
+        let ballsHTML = '';
+        for (let i = 1; i <= 20; i++) {
+            const randomNum = Math.floor(Math.random() * 45) + 1;
+            ballsHTML += createBallHTML(randomNum, 'micro');
+        }
+        chamber.innerHTML = ballsHTML;
+    }
+    initChamber();
+
+    // Render Filter Grids (1 ~ 45)
+    function renderFilterGrids() {
+        const fixedGrid = document.getElementById('fixed-numbers-grid');
+        const excludedGrid = document.getElementById('excluded-numbers-grid');
+
+        if (!fixedGrid || !excludedGrid) return;
+
+        let fixedHTML = '';
+        let excludedHTML = '';
+
+        for (let i = 1; i <= 45; i++) {
+            const isFixed = fixedNumbers.has(i);
+            const isExcluded = excludedNumbers.has(i);
+
+            fixedHTML += `
+                <div class="num-chip ${isFixed ? 'fixed' : ''}" data-num="${i}" data-type="fixed">
+                    ${i}
+                </div>
+            `;
+
+            excludedHTML += `
+                <div class="num-chip ${isExcluded ? 'excluded' : ''}" data-num="${i}" data-type="excluded">
+                    ${i}
+                </div>
+            `;
         }
 
-        // Dashboard Preview List
-        if (dashTaskList) {
-            dashTaskList.innerHTML = tasks.slice(0, 3).map(task => `
-                <li class="task-item ${task.completed ? 'completed' : ''}">
-                    <div class="task-left">
-                        <span class="task-text">${task.title}</span>
-                    </div>
-                    <span class="task-cat">${task.category}</span>
-                </li>
-            `).join('');
-        }
+        fixedGrid.innerHTML = fixedHTML;
+        excludedGrid.innerHTML = excludedHTML;
 
-        // Full Task List with Filter
-        if (fullTaskList) {
-            const filteredTasks = tasks.filter(task => {
-                if (currentFilter === 'active') return !task.completed;
-                if (currentFilter === 'completed') return task.completed;
-                return true;
-            });
-
-            fullTaskList.innerHTML = filteredTasks.map(task => `
-                <li class="task-item ${task.completed ? 'completed' : ''}">
-                    <div class="task-left">
-                        <input type="checkbox" class="task-checkbox" data-id="${task.id}" ${task.completed ? 'checked' : ''}>
-                        <span class="task-text">${task.title}</span>
-                    </div>
-                    <div class="task-right">
-                        <span class="task-cat">${task.category}</span>
-                        <button class="btn-text btn-delete-task" data-id="${task.id}" style="color:#ef4444; margin-left: 10px;">삭제</button>
-                    </div>
-                </li>
-            `).join('');
-
-            // Attach Checkbox Events
-            fullTaskList.querySelectorAll('.task-checkbox').forEach(chk => {
-                chk.addEventListener('change', (e) => {
-                    const id = Number(e.target.getAttribute('data-id'));
-                    const task = tasks.find(t => t.id === id);
-                    if (task) {
-                        task.completed = e.target.checked;
-                        saveTasks();
+        // Attach Click Listeners
+        fixedGrid.querySelectorAll('.num-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const num = Number(chip.getAttribute('data-num'));
+                if (fixedNumbers.has(num)) {
+                    fixedNumbers.delete(num);
+                } else {
+                    if (fixedNumbers.size >= 5) {
+                        showToast('고정수는 최대 5개까지 설정할 수 있습니다.');
+                        return;
                     }
-                });
+                    if (excludedNumbers.has(num)) {
+                        excludedNumbers.delete(num);
+                    }
+                    fixedNumbers.add(num);
+                }
+                renderFilterGrids();
             });
+        });
 
-            // Attach Delete Events
-            fullTaskList.querySelectorAll('.btn-delete-task').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const id = Number(e.target.getAttribute('data-id'));
-                    tasks = tasks.filter(t => t.id !== id);
-                    saveTasks();
-                });
+        excludedGrid.querySelectorAll('.num-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const num = Number(chip.getAttribute('data-num'));
+                if (excludedNumbers.has(num)) {
+                    excludedNumbers.delete(num);
+                } else {
+                    if (fixedNumbers.has(num)) {
+                        fixedNumbers.delete(num);
+                    }
+                    excludedNumbers.add(num);
+                }
+                renderFilterGrids();
             });
-        }
-    }
-
-    // Add Task Form
-    const addTaskForm = document.getElementById('add-task-form');
-    if (addTaskForm) {
-        addTaskForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const titleInput = document.getElementById('new-task-title');
-            const catSelect = document.getElementById('new-task-category');
-
-            if (titleInput.value.trim() !== '') {
-                const newTask = {
-                    id: Date.now(),
-                    title: titleInput.value.trim(),
-                    category: catSelect.value,
-                    completed: false
-                };
-                tasks.unshift(newTask);
-                titleInput.value = '';
-                saveTasks();
-            }
         });
     }
 
-    // Filter Buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentFilter = btn.getAttribute('data-filter');
-            renderTasks();
-        });
+    renderFilterGrids();
+
+    // Reset Filters
+    document.getElementById('btn-reset-filters')?.addEventListener('click', () => {
+        fixedNumbers.clear();
+        excludedNumbers.clear();
+        renderFilterGrids();
+        showToast('필터가 초기화되었습니다.');
     });
 
-    // Quick Note (Dashboard)
-    const quickNoteInput = document.getElementById('quick-note-input');
-    const noteStatusMsg = document.getElementById('note-status-msg');
-    const savedQuickNote = localStorage.getItem('nova_quick_note') || '';
-    if (quickNoteInput) {
-        quickNoteInput.value = savedQuickNote;
-        quickNoteInput.addEventListener('input', () => {
-            localStorage.setItem('nova_quick_note', quickNoteInput.value);
-            if (noteStatusMsg) {
-                noteStatusMsg.textContent = '저장됨 ✓';
-                setTimeout(() => { noteStatusMsg.textContent = ''; }, 2000);
+    // Single Game Generation Algorithm
+    function generateSingleLottoGame() {
+        const selected = new Set(fixedNumbers);
+        const pool = [];
+
+        for (let i = 1; i <= 45; i++) {
+            if (!selected.has(i) && !excludedNumbers.has(i)) {
+                pool.push(i);
             }
+        }
+
+        // Shuffle Pool (Fisher-Yates Shuffle)
+        for (let i = pool.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+
+        // Fill up to 6 numbers
+        while (selected.size < 6 && pool.length > 0) {
+            selected.add(pool.pop());
+        }
+
+        const numbers = Array.from(selected).sort((a, b) => a - b);
+
+        // Bonus Number (from remaining pool)
+        let bonus = null;
+        if (pool.length > 0) {
+            bonus = pool.pop();
+        } else {
+            for (let i = 1; i <= 45; i++) {
+                if (!numbers.includes(i)) {
+                    bonus = i;
+                    break;
+                }
+            }
+        }
+
+        return { numbers, bonus };
+    }
+
+    // Main Draw Button Event
+    const btnDraw = document.getElementById('btn-draw');
+    btnDraw?.addEventListener('click', () => {
+        const gameCount = Number(document.getElementById('game-count').value);
+        const statusBadge = document.getElementById('machine-status');
+        const mainDisplay = document.getElementById('main-result-display');
+        const container = document.getElementById('games-results-container');
+
+        if (statusBadge) statusBadge.textContent = 'DRAWING...';
+        btnDraw.disabled = true;
+
+        // Shuffle chamber animation
+        initChamber();
+
+        // Animate result presentation
+        generatedGames = [];
+        for (let i = 0; i < gameCount; i++) {
+            generatedGames.push(generateSingleLottoGame());
+        }
+
+        // Update Frequency Stats
+        generatedGames.forEach(g => {
+            g.numbers.forEach(n => { numberFrequency[n]++; });
         });
-    }
+        updateFrequencyStats();
 
-    // Notes App Manager
-    function saveNotes() {
-        localStorage.setItem('nova_notes', JSON.stringify(notes));
-        renderNotes();
-    }
+        // Reveal First Game in Chamber Display
+        const firstGame = generatedGames[0];
+        if (mainDisplay) {
+            mainDisplay.innerHTML = firstGame.numbers.map(n => createBallHTML(n)).join('') +
+                `<div class="plus-sign">+</div>` +
+                `<div class="bonus-wrapper">${createBallHTML(firstGame.bonus)}<span class="bonus-tag">보너스</span></div>`;
+        }
 
-    function renderNotes() {
-        const notesSidebarList = document.getElementById('notes-sidebar-list');
-        const titleInput = document.getElementById('note-editor-title');
-        const contentInput = document.getElementById('note-editor-content');
-
-        if (notesSidebarList) {
-            notesSidebarList.innerHTML = notes.map(note => `
-                <div class="note-item ${note.id === currentNoteId ? 'active' : ''}" data-id="${note.id}">
-                    <div class="note-item-title">${note.title || '제목 없음'}</div>
-                    <div class="note-item-date">${note.date}</div>
+        // Render Game List (A, B, C, D, E...)
+        const labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+        if (container) {
+            container.innerHTML = generatedGames.map((game, idx) => `
+                <div class="game-row">
+                    <span class="game-label">${labels[idx] || (idx + 1)}</span>
+                    <div class="game-balls">
+                        ${game.numbers.map(n => createBallHTML(n, 'small')).join('')}
+                        <span style="color:var(--gold-accent); font-weight:800; margin:0 4px;">+</span>
+                        ${createBallHTML(game.bonus, 'small')}
+                    </div>
+                    <button class="btn-text btn-fav" data-idx="${idx}">⭐ 저장</button>
                 </div>
             `).join('');
 
-            notesSidebarList.querySelectorAll('.note-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    currentNoteId = Number(item.getAttribute('data-id'));
-                    renderNotes();
+            // Favorite click event
+            container.querySelectorAll('.btn-fav').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const idx = Number(e.target.getAttribute('data-idx'));
+                    const gameToSave = generatedGames[idx];
+                    if (gameToSave) {
+                        savedFavorites.unshift(gameToSave);
+                        localStorage.setItem('lotto_favorites', JSON.stringify(savedFavorites));
+                        renderFavorites();
+                        showToast(`${labels[idx]} 게임이 보관함에 저장되었습니다.`);
+                    }
                 });
             });
         }
 
-        const activeNote = notes.find(n => n.id === currentNoteId);
-        if (activeNote && titleInput && contentInput) {
-            titleInput.value = activeNote.title;
-            contentInput.value = activeNote.content;
-        } else if (titleInput && contentInput) {
-            titleInput.value = '';
-            contentInput.value = '';
+        setTimeout(() => {
+            if (statusBadge) statusBadge.textContent = 'COMPLETE';
+            btnDraw.disabled = false;
+        }, 300);
+    });
+
+    // Copy All Results
+    document.getElementById('btn-copy-all')?.addEventListener('click', () => {
+        if (generatedGames.length === 0) {
+            showToast('복사할 생성된 번호가 없습니다.');
+            return;
+        }
+
+        const labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+        const textLines = generatedGames.map((game, idx) => {
+            return `[${labels[idx] || (idx + 1)}] ${game.numbers.join(', ')} + 보너스 (${game.bonus})`;
+        }).join('\n');
+
+        navigator.clipboard.writeText(textLines).then(() => {
+            showToast('전체 로또 번호가 클립보드에 복사되었습니다! 📋');
+        });
+    });
+
+    // Render Favorites List
+    function renderFavorites() {
+        const favContainer = document.getElementById('favorites-list-container');
+        const favCount = document.getElementById('fav-count');
+
+        if (favCount) favCount.textContent = savedFavorites.length;
+
+        if (favContainer) {
+            if (savedFavorites.length === 0) {
+                favContainer.innerHTML = '<div class="empty-state small">보관된 번호가 없습니다.</div>';
+                return;
+            }
+
+            favContainer.innerHTML = savedFavorites.map((game, idx) => `
+                <div class="game-row">
+                    <div class="game-balls">
+                        ${game.numbers.map(n => createBallHTML(n, 'micro')).join('')}
+                        <span style="color:var(--gold-accent); font-weight:700; font-size:11px;">+</span>
+                        ${createBallHTML(game.bonus, 'micro')}
+                    </div>
+                    <button class="btn-text btn-del-fav" data-idx="${idx}" style="color:#ef4444;">삭제</button>
+                </div>
+            `).join('');
+
+            favContainer.querySelectorAll('.btn-del-fav').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const idx = Number(e.target.getAttribute('data-idx'));
+                    savedFavorites.splice(idx, 1);
+                    localStorage.setItem('lotto_favorites', JSON.stringify(savedFavorites));
+                    renderFavorites();
+                });
+            });
         }
     }
 
-    document.getElementById('btn-save-note')?.addEventListener('click', () => {
-        const title = document.getElementById('note-editor-title').value;
-        const content = document.getElementById('note-editor-content').value;
-        const activeNote = notes.find(n => n.id === currentNoteId);
+    document.getElementById('btn-clear-favs')?.addEventListener('click', () => {
+        savedFavorites = [];
+        localStorage.setItem('lotto_favorites', JSON.stringify(savedFavorites));
+        renderFavorites();
+        showToast('보관함이 비워졌습니다.');
+    });
 
-        if (activeNote) {
-            activeNote.title = title;
-            activeNote.content = content;
-            saveNotes();
-            alert('메모가 저장되었습니다.');
+    renderFavorites();
+
+    // Update Frequency Bar Charts
+    function updateFrequencyStats() {
+        let ranges = [0, 0, 0, 0, 0]; // 1-10, 11-20, 21-30, 31-40, 41-45
+        let totalDrawn = 0;
+
+        for (let i = 1; i <= 45; i++) {
+            const count = numberFrequency[i];
+            totalDrawn += count;
+            if (i <= 10) ranges[0] += count;
+            else if (i <= 20) ranges[1] += count;
+            else if (i <= 30) ranges[2] += count;
+            else if (i <= 40) ranges[3] += count;
+            else ranges[4] += count;
         }
-    });
 
-    document.getElementById('btn-new-note')?.addEventListener('click', () => {
-        const now = new Date();
-        const dateStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-        const newNote = {
-            id: Date.now(),
-            title: '새 메모',
-            content: '',
-            date: dateStr
-        };
-        notes.unshift(newNote);
-        currentNoteId = newNote.id;
-        saveNotes();
-    });
+        if (totalDrawn === 0) return;
 
-    document.getElementById('btn-delete-note')?.addEventListener('click', () => {
-        if (currentNoteId && notes.length > 0) {
-            notes = notes.filter(n => n.id !== currentNoteId);
-            currentNoteId = notes.length > 0 ? notes[0].id : null;
-            saveNotes();
+        ranges.forEach((cnt, idx) => {
+            const pct = Math.round((cnt / totalDrawn) * 100);
+            const bar = document.getElementById(`stat-bar-${idx + 1}`);
+            const val = document.getElementById(`stat-val-${idx + 1}`);
+            if (bar) bar.style.width = `${pct}%`;
+            if (val) val.textContent = `${pct}%`;
+        });
+    }
+
+    // Toast Notification System
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        if (toast) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
-    });
-
-    // Quick Action button in header
-    document.getElementById('btn-quick-action')?.addEventListener('click', () => {
-        document.querySelector('[data-tab="tasks"]').click();
-        document.getElementById('new-task-title').focus();
-    });
-
-    // Initial Render
-    renderTasks();
-    renderNotes();
+    }
 });
