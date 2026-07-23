@@ -3,175 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로또 6/45 행운의 번호 추첨기 | AI & 프리미엄 분석기</title>
-    <meta name="description" content="AI 번호 추천, 제외수/고정수 설정, 통계 분석 및 비즈니스 제휴 문의를 제공하는 로또 6/45 추첨 사이트입니다.">
+    <title>AI 동물상 테스트 | 강아지상 vs 고양이상 구분 분석기</title>
+    <meta name="description" content="인공지능(AI)이 당신의 얼굴을 분석하여 강아지상인지 고양이상인지 알려드립니다. 사진을 업로드하여 지금 바로 확인해보세요!">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="AI 동물상 테스트 - 강아지상 vs 고양이상">
+    <meta property="og:description" content="AI 인공지능이 분석하는 나의 동물상! 나는 멍뭉미 강아지상일까, 냥글냥글 고양이상일까?">
+    <meta property="og:type" content="website">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+    
+    <!-- TensorFlow.js & Teachable Machine Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="theme-gold">
+<body class="theme-animal">
     <!-- Background Animated Blobs -->
-    <div class="bg-glow blob-1"></div>
-    <div class="bg-glow blob-2"></div>
-    <div class="bg-glow blob-3"></div>
+    <div class="bg-glow blob-dog"></div>
+    <div class="bg-glow blob-cat"></div>
 
     <div class="app-container">
-        <!-- Header Section -->
+        <!-- Header -->
         <header class="main-header glass-panel">
             <div class="header-logo">
-                <div class="logo-icon">🎰</div>
+                <div class="logo-icon">🐶🐱</div>
                 <div>
-                    <h1>LOTTO <span class="accent-text">PRO 6/45</span></h1>
-                    <p class="subtitle">AI 알고리즘 & 필터링 기반 행운의 로또 추첨기</p>
+                    <h1>AI 동물상 <span class="accent-text">TEST</span></h1>
+                    <p class="subtitle">인공지능 비전 모델이 분석하는 나의 얼굴 동물상 유형</p>
                 </div>
             </div>
             <div class="header-actions">
-                <div class="color-legend">
-                    <span class="legend-item ball-1-10">1~10</span>
-                    <span class="legend-item ball-11-20">11~20</span>
-                    <span class="legend-item ball-21-30">21~30</span>
-                    <span class="legend-item ball-31-40">31~40</span>
-                    <span class="legend-item ball-41-45">41~45</span>
-                </div>
+                <span class="model-badge">Teachable Machine AI</span>
                 <button class="btn btn-sm btn-secondary ml-10" id="btn-open-partner-modal">
                     🤝 제휴 문의
                 </button>
             </div>
         </header>
 
-        <!-- Main Grid Layout -->
-        <main class="lotto-grid">
-            <!-- Left Column: Controls & Generator -->
-            <section class="left-panel">
-                <!-- Interactive Lotto Machine / Display -->
-                <div class="glass-card machine-card">
-                    <div class="machine-header">
-                        <h2>🔮 번호 추첨 머신</h2>
-                        <span class="status-badge" id="machine-status">READY</span>
+        <!-- Main Test Container -->
+        <main class="animal-test-grid">
+            <!-- Upload & Camera Section -->
+            <section class="glass-card upload-section" id="upload-card">
+                <div class="card-header-text text-center">
+                    <h2>내 얼굴 사진으로 <span class="highlight">동물상 확인하기</span></h2>
+                    <p>사진은 어디에도 저장되지 않고 오직 본인의 브라우저에서만 분석됩니다 🔒</p>
+                </div>
+
+                <!-- Input Options Tabs -->
+                <div class="mode-tabs">
+                    <button class="mode-tab active" id="tab-file">📁 파일 업로드</button>
+                    <button class="mode-tab" id="tab-webcam">📷 웹캠 촬영</button>
+                </div>
+
+                <!-- Dropzone for File Upload -->
+                <div class="dropzone" id="dropzone">
+                    <input type="file" id="file-input" accept="image/*" class="file-input-hidden">
+                    <div class="dropzone-content" id="dropzone-prompt">
+                        <div class="upload-icon">📸</div>
+                        <p class="upload-title">사진을 여기에 드래그하거나 클릭하여 업로드</p>
+                        <span class="upload-sub">JPG, PNG, WEBP 지원 (얼굴이 잘 보이는 정면 사진 추천)</span>
                     </div>
 
-                    <!-- Ball Animation Chamber -->
-                    <div class="chamber-container">
-                        <div class="chamber-glass">
-                            <div class="chamber-balls" id="chamber-balls">
-                                <!-- Dynamic floating background balls -->
-                            </div>
-                        </div>
+                    <!-- Image Preview & Scan Loader Overlay -->
+                    <div class="preview-container hidden" id="preview-container">
+                        <img id="image-preview" alt="얼굴 이미지 미리보기" src="">
+                        <div class="scanner-line hidden" id="scanner-line"></div>
                     </div>
 
-                    <!-- Primary Result Balls Display -->
-                    <div class="result-display" id="main-result-display">
-                        <div class="placeholder-text">아래 버튼을 눌러 번호를 추첨하세요!</div>
-                    </div>
-
-                    <!-- Action Controls -->
-                    <div class="action-bar">
-                        <div class="game-count-selector">
-                            <label for="game-count">추첨 게임 수:</label>
-                            <select id="game-count" class="modern-select">
-                                <option value="1">1 게임 (A)</option>
-                                <option value="5" selected>5 게임 (A~E 세트)</option>
-                                <option value="10">10 게임</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-primary btn-generate" id="btn-draw">
-                            <span class="btn-icon">⚡</span>
-                            <span>행운의 번호 추첨하기</span>
-                        </button>
+                    <!-- Webcam Container -->
+                    <div class="webcam-container hidden" id="webcam-container">
+                        <div id="webcam-wrapper"></div>
                     </div>
                 </div>
 
-                <!-- Advanced Filter Controls -->
-                <div class="glass-card filter-card">
-                    <div class="card-title-row">
-                        <h3>🛠️ 맞춤 필터 설정</h3>
-                        <button class="btn-text" id="btn-reset-filters">필터 초기화</button>
-                    </div>
-
-                    <div class="filter-group">
-                        <label class="filter-label">📌 고정수 (반드시 포함할 번호 - 최대 5개)</label>
-                        <div class="number-selector-grid" id="fixed-numbers-grid">
-                            <!-- Populated by JS -->
-                        </div>
-                    </div>
-
-                    <div class="filter-group mt-15">
-                        <label class="filter-label">🚫 제외수 (추첨에서 제외할 번호)</label>
-                        <div class="number-selector-grid" id="excluded-numbers-grid">
-                            <!-- Populated by JS -->
-                        </div>
-                    </div>
+                <!-- Action Button Container -->
+                <div class="action-btn-area">
+                    <button class="btn btn-primary btn-large width-full hidden" id="btn-webcam-capture">
+                        📸 사진 찍어서 분석하기
+                    </button>
+                    <button class="btn btn-secondary btn-large width-full hidden" id="btn-reselect">
+                        🔄 다른 사진 선택하기
+                    </button>
                 </div>
             </section>
 
-            <!-- Right Column: Results List, Favorites & Analytics -->
-            <section class="right-panel">
-                <!-- Multi-Game Results List -->
-                <div class="glass-card results-card">
-                    <div class="card-title-row">
-                        <h3>📜 추첨 결과 목록</h3>
-                        <button class="btn btn-sm btn-secondary" id="btn-copy-all">
-                            📋 전체 복사
-                        </button>
+            <!-- Result Section -->
+            <section class="glass-card result-section hidden" id="result-card">
+                <div class="result-header text-center">
+                    <span class="badge-result">분석 결과</span>
+                    <h2 class="result-main-title" id="result-title">분석 중...</h2>
+                    <p class="result-sub-desc" id="result-desc"></p>
+                </div>
+
+                <!-- Main Mascot / Result Badge -->
+                <div class="result-badge-display">
+                    <div class="main-animal-emoji" id="main-emoji">🐶</div>
+                    <div class="main-percentage" id="main-percentage">0%</div>
+                </div>
+
+                <!-- Match Progress Bars -->
+                <div class="bars-container mt-25">
+                    <!-- Dog Bar -->
+                    <div class="animal-bar-group">
+                        <div class="bar-label-row">
+                            <span class="animal-label">🐶 강아지상 (Dog)</span>
+                            <span class="animal-val" id="dog-val">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill dog-fill" id="dog-fill" style="width: 0%;"></div>
+                        </div>
                     </div>
-                    <div class="results-list" id="games-results-container">
-                        <div class="empty-state">추첨 버튼을 누르면 여기에 게임 세트가 생성됩니다.</div>
+
+                    <!-- Cat Bar -->
+                    <div class="animal-bar-group mt-15">
+                        <div class="bar-label-row">
+                            <span class="animal-label">🐱 고양이상 (Cat)</span>
+                            <span class="animal-val" id="cat-val">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill cat-fill" id="cat-fill" style="width: 0%;"></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Analytics & History Section -->
-                <div class="grid-2 mt-20">
-                    <!-- Saved Favorites -->
-                    <div class="glass-card favorites-card">
-                        <div class="card-title-row">
-                            <h3>⭐ 보관함 (<span id="fav-count">0</span>)</h3>
-                            <button class="btn-text" id="btn-clear-favs">비우기</button>
-                        </div>
-                        <div class="favorites-list" id="favorites-list-container">
-                            <div class="empty-state small">보관된 번호가 없습니다.</div>
-                        </div>
-                    </div>
+                <!-- Detailed Analysis & Trait Cards -->
+                <div class="trait-box glass-card mt-25" id="trait-box">
+                    <h3 class="trait-header" id="trait-header">✨ 당신의 동물상 캐릭터 특성</h3>
+                    <ul class="trait-list" id="trait-list">
+                        <!-- JS populated -->
+                    </ul>
+                </div>
 
-                    <!-- Frequency Stats Card -->
-                    <div class="glass-card stats-card">
-                        <div class="card-title-row">
-                            <h3>📊 번호대별 출현 빈도</h3>
-                        </div>
-                        <div class="stats-bars" id="stats-bars-container">
-                            <div class="stat-bar-row">
-                                <span class="stat-lbl">1~10번대</span>
-                                <div class="stat-track"><div class="stat-fill ball-1-10-bg" style="width: 0%;" id="stat-bar-1"></div></div>
-                                <span class="stat-num" id="stat-val-1">0%</span>
-                            </div>
-                            <div class="stat-bar-row">
-                                <span class="stat-lbl">11~20번대</span>
-                                <div class="stat-track"><div class="stat-fill ball-11-20-bg" style="width: 0%;" id="stat-bar-2"></div></div>
-                                <span class="stat-num" id="stat-val-2">0%</span>
-                            </div>
-                            <div class="stat-bar-row">
-                                <span class="stat-lbl">21~30번대</span>
-                                <div class="stat-track"><div class="stat-fill ball-21-30-bg" style="width: 0%;" id="stat-bar-3"></div></div>
-                                <span class="stat-num" id="stat-val-3">0%</span>
-                            </div>
-                            <div class="stat-bar-row">
-                                <span class="stat-lbl">31~40번대</span>
-                                <div class="stat-track"><div class="stat-fill ball-31-40-bg" style="width: 0%;" id="stat-bar-4"></div></div>
-                                <span class="stat-num" id="stat-val-4">0%</span>
-                            </div>
-                            <div class="stat-bar-row">
-                                <span class="stat-lbl">41~45번대</span>
-                                <div class="stat-track"><div class="stat-fill ball-41-45-bg" style="width: 0%;" id="stat-bar-5"></div></div>
-                                <span class="stat-num" id="stat-val-5">0%</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Share & Retest -->
+                <div class="result-actions mt-25">
+                    <button class="btn btn-secondary flex-1" id="btn-copy-link">
+                        🔗 결과 링크 복사
+                    </button>
+                    <button class="btn btn-primary flex-1" id="btn-restart">
+                        🔄 다시 테스트하기
+                    </button>
                 </div>
             </section>
         </main>
 
-        <!-- Inline Formspree Partnership Inquiry Section -->
+        <!-- Formspree Partnership Inquiry Section -->
         <section class="glass-card partner-section mt-25" id="partner-section">
             <div class="card-title-row">
                 <div>
@@ -238,23 +218,14 @@
             <div class="card-title-row">
                 <div>
                     <h2>💬 사용자 커뮤니티 & 댓글</h2>
-                    <p class="subtitle">행운의 번호 후기나 의견을 커뮤니티에 공유해 보세요!</p>
+                    <p class="subtitle">동물상 테스트 결과나 소감을 커뮤니티에 공유해 보세요!</p>
                 </div>
                 <span class="tag-badge accent">Disqus 연동</span>
             </div>
             <div class="disqus-container mt-20">
                 <div id="disqus_thread"></div>
                 <script>
-                    /**
-                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                    /*
-                    var disqus_config = function () {
-                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                    };
-                    */
-                    (function() { // DON'T EDIT BELOW THIS LINE
+                    (function() {
                     var d = document, s = d.createElement('script');
                     s.src = 'https://productbuilder-1hmlw0f75b.disqus.com/embed.js';
                     s.setAttribute('data-timestamp', +new Date());
