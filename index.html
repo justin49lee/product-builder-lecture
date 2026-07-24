@@ -3,403 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 동물상 테스트 | 강아지상 고양이상 무료 분석 - PetFace AI</title>
-    <meta name="description" content="AI 인공지능으로 나의 동물상을 무료로 분석해보세요! 강아지상, 고양이상 판별부터 관상학적 특징 분석, 연예인 닮은꼴, 메이크업 팁, 로또 번호 생성까지 모든 것을 한 곳에서!">
-    <meta name="keywords" content="동물상 테스트, AI 동물상, 강아지상 테스트, 고양이상 테스트, 무료 관상 분석, 인공지능 얼굴 분석, 동물상 특징, 강아지상 메이크업, 고양이상 메이크업, 로또 번호 생성기">
-    <meta name="author" content="PetFace AI">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://petface-ai.com/">
+    <!-- SEO Master Meta Tags -->
+    <title>AI 동물상 테스트 & 얼굴 관상 가이드 | 멍뭉상 vs 냥이상 분석 포털</title>
+    <meta name="description" content="최신 AI 인공지능 비전 모델 기반 얼굴 동물상 테스트! 강아지상, 고양이상, 공룡상, 여우상 특징 분석부터 유형별 스타일링 팁 및 관상 정보까지 제공합니다. 100% 프라이버시 보장.">
+    <meta name="keywords" content="동물상 테스트, AI 동물상, 강아지상 고양이상, 얼굴 관상, AI 관상 테스트, Teachable Machine, 동물상 유형">
+    <meta name="author" content="Nova AI Lab">
+    <link rel="canonical" href="https://github.com/justin49lee/product-builder-lecture">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="AI 동물상 테스트 - 나는 강아지상? 고양이상? | PetFace AI">
-    <meta property="og:description" content="인공지능이 분석해주는 나만의 동물상! 강아지상, 고양이상의 관상학적 특징과 매력 포인트를 무료로 확인하세요.">
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="AI 동물상 테스트 & 얼굴 관상 분석 포털">
+    <meta property="og:description" content="AI 인공지능이 분석하는 나의 동물상! 나는 멍뭉미 강아지상일까, 냥글냥글 고양이상일까? 지금 사진 한 장으로 무료 테스트해보세요.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ko_KR">
-    <meta property="og:image" content="https://petface-ai.com/og-image.jpg">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI 동물상 테스트 | PetFace AI">
-    <meta name="twitter:description" content="나는 강아지상? 고양이상? AI가 1초만에 분석해드립니다!">
+    <!-- Structured Data (JSON-LD) for Google Search Engine Optimization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AI 동물상 테스트 포털",
+      "url": "https://github.com/justin49lee/product-builder-lecture",
+      "description": "Google Teachable Machine 기반 최첨단 AI 동물상 구분 및 관상 분석 애플리케이션",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      }
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- TensorFlow.js & Teachable Machine -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+    
+    <!-- TensorFlow.js & Teachable Machine Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-
-    <!-- Google AdSense -->
+    
+    <!-- Google AdSense Official Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8733789079099371" crossorigin="anonymous"></script>
-
+    
     <link rel="stylesheet" href="style.css">
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "PetFace AI - AI 동물상 테스트",
-        "description": "인공지능 기반 동물상 분석 서비스. 강아지상, 고양이상 판별 및 관상학적 특징 분석",
-        "url": "https://petface-ai.com",
-        "applicationCategory": "EntertainmentApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "KRW"
-        }
-    }
-    </script>
 </head>
-<body>
+<body class="theme-animal">
+    <!-- Background Animated Glow Blobs -->
+    <div class="bg-glow blob-dog"></div>
+    <div class="bg-glow blob-cat"></div>
 
-    <!-- Decorative Background -->
-    <div class="bg-mesh"></div>
-    <div class="bg-orb orb1"></div>
-    <div class="bg-orb orb2"></div>
-    <div class="bg-orb orb3"></div>
+    <!-- Main Navigation Bar -->
+    <nav class="navbar glass-panel sticky-nav">
+        <div class="nav-container">
+            <a href="#hero-section" class="nav-brand">
+                <span class="brand-icon">🐶🐱</span>
+                <span class="brand-name">ANIMAL<span class="accent-text">AI</span></span>
+            </a>
 
-    <div class="site-wrapper">
-
-        <!-- ===== HEADER ===== -->
-        <header class="site-header" id="top">
-            <div class="header-inner container">
-                <a href="#top" class="logo-link">
-                    <div class="logo">
-                        <span class="logo-icon">🐾</span>
-                        <div class="logo-text">
-                            <span class="logo-name">PetFace <span class="logo-accent">AI</span></span>
-                            <span class="logo-tagline">동물상 무료 분석 플랫폼</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation -->
-                <nav class="main-nav" role="navigation" aria-label="주요 메뉴">
-                    <a class="nav-item active" href="#section-test" id="nav-test">🔍 AI 테스트</a>
-                    <a class="nav-item" href="#section-guide" id="nav-guide">📖 동물상 가이드</a>
-                    <a class="nav-item" href="#section-celeb" id="nav-celeb">⭐ 연예인 동물상</a>
-                    <a class="nav-item" href="#section-makeup" id="nav-makeup">💄 스타일링 팁</a>
-                    <a class="nav-item" href="#section-lotto" id="nav-lotto">🎰 로또 추첨기</a>
-                    <a class="nav-item" href="#section-faq" id="nav-faq">❓ FAQ</a>
-                </nav>
-
-                <a href="#partner-section" class="btn-contact" id="btn-header-contact">제휴 문의 →</a>
-
-                <!-- Mobile Hamburger -->
-                <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
-                    <span></span><span></span><span></span>
-                </button>
+            <div class="nav-links" id="nav-links">
+                <a href="#test-section" class="nav-link active">AI 테스트</a>
+                <a href="#guide-section" class="nav-link">동물상 가이드</a>
+                <a href="#algorithm-section" class="nav-link">AI 기술소개</a>
+                <a href="#faq-section" class="nav-link">자주 묻는 질문</a>
+                <a href="#partner-section" class="nav-link">제휴 문의</a>
             </div>
 
-            <!-- Mobile Menu -->
-            <div class="mobile-menu" id="mobile-menu">
-                <a class="mobile-nav-item" href="#section-test">🔍 AI 테스트</a>
-                <a class="mobile-nav-item" href="#section-guide">📖 동물상 가이드</a>
-                <a class="mobile-nav-item" href="#section-celeb">⭐ 연예인 동물상</a>
-                <a class="mobile-nav-item" href="#section-makeup">💄 스타일링 팁</a>
-                <a class="mobile-nav-item" href="#section-lotto">🎰 로또 추첨기</a>
-                <a class="mobile-nav-item" href="#section-faq">❓ FAQ</a>
-                <a class="mobile-nav-item highlight" href="#partner-section">🤝 제휴 문의</a>
+            <div class="nav-right">
+                <button class="btn btn-sm btn-outline" id="btn-privacy-policy">개인정보 처리방침</button>
             </div>
-        </header>
-
-        <!-- ===== HERO SECTION ===== -->
-        <section class="hero-section" id="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-badge">🤖 AI 기반 무료 분석</div>
-                    <h1 class="hero-title">나는 <span class="gradient-text">강아지상</span>? <br><span class="gradient-text-cat">고양이상</span>?</h1>
-                    <p class="hero-desc">Google Teachable Machine과 TensorFlow.js 딥러닝 기술로<br>사진 한 장에서 나의 동물상 유형과 관상학적 특징을 무료로 분석합니다.</p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-num">1초</span>
-                            <span class="stat-label">AI 분석 시간</span>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-num">100%</span>
-                            <span class="stat-label">무료 서비스</span>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-num">🔒</span>
-                            <span class="stat-label">개인정보 완전 보호</span>
-                        </div>
-                    </div>
-                    <a href="#section-test" class="btn-hero">지금 바로 테스트하기 ✨</a>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-card-stack">
-                        <div class="hcard dog-card">
-                            <span class="hcard-emoji">🐶</span>
-                            <div>
-                                <strong>강아지상</strong>
-                                <span>친근하고 따뜻한 인상</span>
-                            </div>
-                        </div>
-                        <div class="hcard cat-card">
-                            <span class="hcard-emoji">🐱</span>
-                            <div>
-                                <strong>고양이상</strong>
-                                <span>도도하고 세련된 인상</span>
-                            </div>
-                        </div>
-                        <div class="hcard mix-card">
-                            <span class="hcard-emoji">🐾</span>
-                            <div>
-                                <strong>황금비율 개냥이상</strong>
-                                <span>매력 넘치는 반전 인상</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== TOP AD BANNER ===== -->
-        <div class="ad-banner container">
-            <p class="ad-label">광고</p>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-8733789079099371"
-                 data-ad-slot="auto"
-                 data-ad-format="horizontal"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
+    </nav>
 
-        <!-- ===== AI TEST SECTION ===== -->
-        <section class="content-section" id="section-test">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">🔍 AI 동물상 테스트</h2>
-                    <p class="section-desc">얼굴 사진을 업로드하거나 웹캠으로 직접 촬영하면 AI가 즉시 분석합니다</p>
-                </div>
-
-                <div class="test-layout">
-                    <!-- Upload Card -->
-                    <div class="card upload-card" id="upload-card">
-                        <div class="privacy-badge">🔒 사진은 브라우저 내에서만 처리되며 서버에 전송되지 않습니다</div>
-
-                        <!-- Mode Tabs -->
-                        <div class="mode-tabs">
-                            <button class="mode-tab active" id="tab-file">📁 사진 업로드</button>
-                            <button class="mode-tab" id="tab-webcam">📷 웹캠 촬영</button>
-                        </div>
-
-                        <!-- Dropzone -->
-                        <div class="dropzone" id="dropzone">
-                            <input type="file" id="file-input" accept="image/*" class="file-input-hidden">
-
-                            <div class="dz-prompt" id="dropzone-prompt">
-                                <div class="dz-icon">📸</div>
-                                <p class="dz-title">클릭하거나 사진을 드래그하여 올려주세요</p>
-                                <p class="dz-hint">JPG, PNG, WEBP · 정면 얼굴 사진 권장 · 최대 10MB</p>
-                            </div>
-
-                            <div class="preview-wrap hidden" id="preview-container">
-                                <img id="image-preview" alt="분석할 얼굴 사진 미리보기" src="">
-                                <div class="scanner-line hidden" id="scanner-line"></div>
-                                <div class="scan-overlay hidden" id="scan-overlay">
-                                    <div class="scan-loader">
-                                        <div class="scan-dot"></div>
-                                        <span>AI 분석 중...</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="webcam-wrap hidden" id="webcam-container">
-                                <div id="webcam-wrapper"></div>
-                            </div>
-                        </div>
-
-                        <div class="upload-actions">
-                            <button class="btn-primary-lg hidden" id="btn-webcam-capture">📸 지금 이 얼굴로 분석하기</button>
-                            <button class="btn-outline hidden" id="btn-reselect">🔄 다른 사진 선택</button>
-                        </div>
-                    </div>
-
-                    <!-- Result Card -->
-                    <div class="card result-card hidden" id="result-card">
-                        <div class="result-top">
-                            <span class="result-badge">AI 분석 완료</span>
-                            <h3 class="result-type" id="result-title">강아지상</h3>
-                            <p class="result-quote" id="result-desc"></p>
-                        </div>
-
-                        <div class="result-emoji-box">
-                            <div class="big-emoji" id="main-emoji">🐶</div>
-                            <div class="big-pct" id="main-percentage">0%</div>
-                        </div>
-
-                        <div class="bars-wrap">
-                            <div class="animal-bar">
-                                <div class="bar-head">
-                                    <span>🐶 강아지상</span>
-                                    <span id="dog-val">0%</span>
-                                </div>
-                                <div class="bar-track">
-                                    <div class="bar-fill dog-fill" id="dog-fill" style="width:0%"></div>
-                                </div>
-                            </div>
-                            <div class="animal-bar">
-                                <div class="bar-head">
-                                    <span>🐱 고양이상</span>
-                                    <span id="cat-val">0%</span>
-                                </div>
-                                <div class="bar-track">
-                                    <div class="bar-fill cat-fill" id="cat-fill" style="width:0%"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="traits-box" id="trait-box">
-                            <h4 id="trait-header">✨ 나의 동물상 특징</h4>
-                            <ul id="trait-list" class="trait-list"></ul>
-                        </div>
-
-                        <div class="result-actions">
-                            <button class="btn-share" id="btn-copy-link">🔗 결과 공유하기</button>
-                            <button class="btn-primary-lg" id="btn-restart">🔄 다시 테스트</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Tips -->
-                <div class="tips-row">
-                    <div class="tip-card">
-                        <span class="tip-icon">💡</span>
-                        <div>
-                            <strong>정확도를 높이려면?</strong>
-                            <p>정면을 바라보고 눈, 코, 입이 잘 보이는 얼굴 사진을 사용하세요.</p>
-                        </div>
-                    </div>
-                    <div class="tip-card">
-                        <span class="tip-icon">☀️</span>
-                        <div>
-                            <strong>조명이 중요해요!</strong>
-                            <p>밝고 균일한 조명 아래에서 찍은 사진이 더 정확한 분석 결과를 냅니다.</p>
-                        </div>
-                    </div>
-                    <div class="tip-card">
-                        <span class="tip-icon">🔒</span>
-                        <div>
-                            <strong>개인정보 완전 보호</strong>
-                            <p>업로드된 사진은 본인의 웹 브라우저에서만 처리됩니다. 서버 저장 없음.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== GUIDE SECTION ===== -->
-        <section class="content-section alt-bg" id="section-guide">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">📖 동물상 완전 가이드</h2>
-                    <p class="section-desc">관상학과 현대 AI 기술로 분석한 동물상별 특징, 성격, 매력 포인트를 알아보세요</p>
-                </div>
-
-                <div class="guide-grid">
-                    <!-- Guide Card: Dog -->
-                    <article class="guide-card dog-theme">
-                        <div class="guide-card-header">
-                            <span class="guide-emoji">🐶</span>
-                            <div>
-                                <h3>강아지상의 특징</h3>
-                                <span class="guide-tag">멍뭉미 · 친근함 · 호감형</span>
-                            </div>
-                        </div>
-                        <div class="guide-body">
-                            <h4>얼굴 특징</h4>
-                            <ul>
-                                <li><strong>눈꼬리:</strong> 살짝 내려간 쌍꺼풀, 초롱초롱하고 큰 눈</li>
-                                <li><strong>눈매:</strong> 수평이거나 아래로 약간 처진 부드러운 눈매</li>
-                                <li><strong>코:</strong> 오동통하고 둥근 코끝, 낮고 넓은 콧대</li>
-                                <li><strong>턱선:</strong> 부드럽고 둥근 라인, 두툼한 볼</li>
-                                <li><strong>전체 인상:</strong> 동글동글하고 순한 느낌</li>
-                            </ul>
-                            <h4 class="mt-12">성격과 매력</h4>
-                            <p>강아지상은 타인에게 자연스럽게 신뢰와 호감을 주는 특성이 있습니다. 관상학적으로 사교성이 뛰어나고 공감 능력이 높으며, 처음 보는 사람도 금방 마음을 열게 만드는 따뜻한 에너지를 가지고 있습니다. 해맑고 밝은 분위기로 주변을 환하게 만드는 '분위기 메이커' 유형이 많습니다.</p>
-                            <div class="charm-tags">
-                                <span>💖 높은 친근감</span>
-                                <span>😊 해맑은 에너지</span>
-                                <span>🤝 원만한 인간관계</span>
-                                <span>💪 뛰어난 공감 능력</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Guide Card: Cat -->
-                    <article class="guide-card cat-theme">
-                        <div class="guide-card-header">
-                            <span class="guide-emoji">🐱</span>
-                            <div>
-                                <h3>고양이상의 특징</h3>
-                                <span class="guide-tag">도도함 · 세련됨 · 카리스마</span>
-                            </div>
-                        </div>
-                        <div class="guide-body">
-                            <h4>얼굴 특징</h4>
-                            <ul>
-                                <li><strong>눈꼬리:</strong> 위로 날카롭게 올라간 눈꼬리 (캣츠아이)가 핵심</li>
-                                <li><strong>눈매:</strong> 길고 가늘며 강렬한 눈빛, 또렷한 쌍꺼풀</li>
-                                <li><strong>코:</strong> 높고 날카로운 콧대, 뾰족한 코끝</li>
-                                <li><strong>턱선:</strong> 갸름하고 뾰족한 V라인 턱선</li>
-                                <li><strong>전체 인상:</strong> 날카롭고 세련된 느낌</li>
-                            </ul>
-                            <h4 class="mt-12">성격과 매력</h4>
-                            <p>고양이상은 처음에는 차갑고 도도해 보이지만 알고 보면 깊은 속정을 가진 '츤데레' 유형이 많습니다. 독립심이 강하고 자신만의 확고한 가치관을 가지고 있습니다. 카리스마 넘치는 분위기와 시선을 사로잡는 강렬한 인상으로 처음 만난 자리에서도 강한 존재감을 뿜어냅니다.</p>
-                            <div class="charm-tags">
-                                <span>✨ 강렬한 카리스마</span>
-                                <span>🔮 신비로운 매력</span>
-                                <span>💎 세련된 분위기</span>
-                                <span>🎯 뚜렷한 가치관</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Guide Card: Mix -->
-                    <article class="guide-card mix-theme">
-                        <div class="guide-card-header">
-                            <span class="guide-emoji">🐾</span>
-                            <div>
-                                <h3>황금비율 개냥이상</h3>
-                                <span class="guide-tag">반전매력 · 만능형 · 최강 호감</span>
-                            </div>
-                        </div>
-                        <div class="guide-body">
-                            <h4>개냥이상이란?</h4>
-                            <p>강아지상과 고양이상 두 가지 특성이 절묘하게 조화를 이루는 유형입니다. AI 분석 결과에서 강아지상과 고양이상 비율이 비슷하게 나오는 경우가 이에 해당합니다. 실제 연예인 중에도 개냥이상으로 분류되는 분들이 많으며, 누구에게나 호감을 주는 '만인의 이상형'이라고도 불립니다.</p>
-                            <h4 class="mt-12">특징과 매력</h4>
-                            <ul>
-                                <li>때로는 강아지처럼 친근하게, 때로는 고양이처럼 도도하게 변신</li>
-                                <li>강아지파와 고양이파 모두에게 사랑받는 팔방미인형</li>
-                                <li>귀여움과 섹시함이 공존하는 독보적인 매력 소유자</li>
-                                <li>질리지 않는, 볼수록 빠져드는 중독성 있는 얼굴</li>
-                            </ul>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- AI Technology Card -->
-                <div class="tech-card">
-                    <div class="tech-icon">🧠</div>
-                    <div class="tech-body">
-                        <h3>어떻게 분석하나요? AI 기술 원리 설명</h3>
-                        <p>본 서비스는 Google의 <strong>Teachable Machine</strong>과 <strong>TensorFlow.js</strong> 라이브러리를 기반으로 개발된 딥러닝 합성곱 신경망(CNN) 모델을 사용합니다. 모델은 수천 장의 얼굴 이미지 데이터셋으로 학습되었으며, 눈꼬리 각도, 눈 크기 비율, 콧대 높이, 입꼬리 방향, 턱선 곡률 등의 시각적 특징점(Feature)을 추출하여 강아지상과 고양이상의 확률값을 계산합니다. 모든 분석은 사용자의 <strong>웹 브라우저 내에서만</strong> 실행되므로 어떠한 이미지 데이터도 서버로 전송되지 않습니다.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== MID AD BANNER ===== -->
-        <div class="ad-banner container">
-            <p class="ad-label">광고</p>
+    <div class="app-container">
+        <!-- Top AdSense Banner -->
+        <div class="ad-top-wrapper mt-15">
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-8733789079099371"
@@ -409,388 +87,394 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <!-- ===== CELEBRITY SECTION ===== -->
-        <section class="content-section" id="section-celeb">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">⭐ 연예인 동물상 유형 분석</h2>
-                    <p class="section-desc">대표적인 연예인들의 동물상 유형을 분석해보았습니다. 나와 같은 유형의 스타를 찾아보세요!</p>
+        <!-- Hero Section -->
+        <header class="hero-section text-center mt-25" id="hero-section">
+            <span class="hero-badge">✨ Teachable Machine Vision AI v2.0</span>
+            <h1 class="hero-title">인공지능이 분석하는 <br><span class="accent-text">나의 얼굴 동물상 테스트</span></h1>
+            <p class="hero-sub">빅데이터와 머신러닝으로 분석하는 강아지상 vs 고양이상 완벽 분석! <br>서버 저장이 전혀 없는 안전한 웹 브라우저 인공지능 테스트입니다.</p>
+        </header>
+
+        <!-- Main Test Container -->
+        <main class="animal-test-grid mt-25" id="test-section">
+            <!-- Upload & Camera Section -->
+            <section class="glass-card upload-section" id="upload-card">
+                <div class="card-header-text text-center">
+                    <h2>📸 사진으로 <span class="highlight">동물상 분석하기</span></h2>
+                    <p>정면 사진을 올려주시면 AI 모델이 1초 만에 찰떡 동물상을 찾아드립니다.</p>
                 </div>
 
-                <div class="celeb-grid">
-                    <div class="celeb-card">
-                        <div class="celeb-emoji">🐶</div>
-                        <h3>강아지상 대표 연예인 유형</h3>
-                        <p>순하고 친근한 이미지로 국민 호감형에 뽑히는 스타들이 주로 해당됩니다. 둥글고 부드러운 눈매와 볼드한 볼살, 올라간 입꼬리가 특징이며 보는 사람을 기분 좋게 만드는 천연 비타민 같은 이미지를 갖고 있습니다. 예능이나 광고에서 특히 강점을 발휘합니다.</p>
-                        <div class="celeb-keywords">
-                            <span>🌟 친근함</span>
-                            <span>😊 호감형</span>
-                            <span>💛 따뜻함</span>
+                <!-- Input Options Tabs -->
+                <div class="mode-tabs">
+                    <button class="mode-tab active" id="tab-file">📁 파일 업로드</button>
+                    <button class="mode-tab" id="tab-webcam">📷 웹캠 촬영</button>
+                </div>
+
+                <!-- Dropzone for File Upload -->
+                <div class="dropzone" id="dropzone">
+                    <input type="file" id="file-input" accept="image/*" class="file-input-hidden">
+                    <div class="dropzone-content" id="dropzone-prompt">
+                        <div class="upload-icon">📸</div>
+                        <p class="upload-title">사진을 여기에 드래그하거나 클릭하여 업로드</p>
+                        <span class="upload-sub">JPG, PNG, WEBP 지원 (얼굴이 잘 보이는 정면 사진 추천)</span>
+                    </div>
+
+                    <!-- Image Preview & Scan Loader Overlay -->
+                    <div class="preview-container hidden" id="preview-container">
+                        <img id="image-preview" alt="얼굴 이미지 미리보기" src="">
+                        <div class="scanner-line hidden" id="scanner-line"></div>
+                    </div>
+
+                    <!-- Webcam Container -->
+                    <div class="webcam-container hidden" id="webcam-container">
+                        <div id="webcam-wrapper"></div>
+                    </div>
+                </div>
+
+                <!-- Action Button Container -->
+                <div class="action-btn-area">
+                    <button class="btn btn-primary btn-large width-full hidden" id="btn-webcam-capture">
+                        📸 사진 찍어서 분석하기
+                    </button>
+                    <button class="btn btn-secondary btn-large width-full hidden" id="btn-reselect">
+                        🔄 다른 사진 선택하기
+                    </button>
+                </div>
+            </section>
+
+            <!-- Result Section -->
+            <section class="glass-card result-section hidden" id="result-card">
+                <div class="result-header text-center">
+                    <span class="badge-result">AI 분석 결과</span>
+                    <h2 class="result-main-title" id="result-title">분석 중...</h2>
+                    <p class="result-sub-desc" id="result-desc"></p>
+                </div>
+
+                <!-- Main Mascot / Result Badge -->
+                <div class="result-badge-display">
+                    <div class="main-animal-emoji" id="main-emoji">🐶</div>
+                    <div class="main-percentage" id="main-percentage">0%</div>
+                </div>
+
+                <!-- Match Progress Bars -->
+                <div class="bars-container mt-25">
+                    <!-- Dog Bar -->
+                    <div class="animal-bar-group">
+                        <div class="bar-label-row">
+                            <span class="animal-label">🐶 강아지상 (Dog)</span>
+                            <span class="animal-val" id="dog-val">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill dog-fill" id="dog-fill" style="width: 0%;"></div>
                         </div>
                     </div>
-                    <div class="celeb-card">
-                        <div class="celeb-emoji">🐱</div>
-                        <h3>고양이상 대표 연예인 유형</h3>
-                        <p>날카롭고 세련된 이미지로 패션·뷰티 화보에서 두각을 나타내는 스타들이 주로 이 유형입니다. 올라간 눈꼬리와 선명한 이목구비가 화면 속에서도 강렬한 존재감을 발휘합니다. 쿨뷰티, 도도미가 키워드인 여배우나 걸그룹 멤버들에게서 자주 볼 수 있습니다.</p>
-                        <div class="celeb-keywords">
-                            <span>✨ 카리스마</span>
-                            <span>💎 세련됨</span>
-                            <span>🔥 강렬함</span>
+
+                    <!-- Cat Bar -->
+                    <div class="animal-bar-group mt-15">
+                        <div class="bar-label-row">
+                            <span class="animal-label">🐱 고양이상 (Cat)</span>
+                            <span class="animal-val" id="cat-val">0%</span>
                         </div>
-                    </div>
-                    <div class="celeb-card">
-                        <div class="celeb-emoji">🐾</div>
-                        <h3>개냥이상 대표 연예인 유형</h3>
-                        <p>강아지상과 고양이상의 경계에 있어 남녀노소 모두에게 폭넓은 인기를 얻는 만능 스타들의 유형입니다. 공식 석상에서는 도도하고 세련되게, 사적인 자리에서는 귀엽고 발랄하게 두 얼굴을 오가는 매력이 있습니다. 대중에게 가장 사랑받는 유형 중 하나입니다.</p>
-                        <div class="celeb-keywords">
-                            <span>🎭 반전매력</span>
-                            <span>🌈 만능형</span>
-                            <span>💫 독보적</span>
+                        <div class="progress-track">
+                            <div class="progress-fill cat-fill" id="cat-fill" style="width: 0%;"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="celeb-note">
-                    <p>💡 <strong>참고:</strong> 동물상 분류는 절대적인 기준이 아닌 인상의 경향성을 나타내는 것으로, 개인의 헤어스타일, 메이크업, 각도, 표정에 따라 결과가 달라질 수 있습니다. 어떤 동물상이든 각각의 독특한 매력이 있습니다!</p>
+                <!-- Detailed Analysis & Trait Cards -->
+                <div class="trait-box glass-card mt-25" id="trait-box">
+                    <h3 class="trait-header" id="trait-header">✨ 당신의 동물상 캐릭터 특성</h3>
+                    <ul class="trait-list" id="trait-list">
+                        <!-- JS populated -->
+                    </ul>
+                </div>
+
+                <!-- Share & Retest -->
+                <div class="result-actions mt-25">
+                    <button class="btn btn-secondary flex-1" id="btn-copy-link">
+                        🔗 결과 링크 복사
+                    </button>
+                    <button class="btn btn-primary flex-1" id="btn-restart">
+                        🔄 다시 테스트하기
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Middle AdSense Banner -->
+        <section class="glass-card ad-section mt-25">
+            <div class="ad-header-row">
+                <span class="ad-badge">SPONSORED</span>
+                <span class="ad-sub">Google AdSense</span>
+            </div>
+            <div class="ad-content-wrapper mt-15">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8733789079099371"
+                     data-ad-slot="auto"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </section>
+
+        <!-- Educational & Informational Guide Section (High Quality Content for AdSense Approval) -->
+        <section class="glass-card guide-section mt-25" id="guide-section">
+            <div class="section-title-box">
+                <h2>📚 대표적인 동물상 유형별 완벽 가이드</h2>
+                <p class="subtitle">얼굴 이목구비의 비율과 이미지에 따른 동물상 유형 가이드입니다.</p>
+            </div>
+
+            <div class="grid-2 mt-20">
+                <article class="guide-card">
+                    <div class="guide-icon">🐶</div>
+                    <h3>1. 강아지상 (Dog Type)</h3>
+                    <p class="guide-text">
+                        <strong>외형적 특징:</strong> 둥글고 순한 눈매, 살짝 내려간 눈꼬리, 부드러운 턱선이 특징입니다. 전체적으로 동글동글한 느낌을 주며 보기만 해도 미소가 지어지는 해맑은 인상입니다.
+                    </p>
+                    <p class="guide-text">
+                        <strong>대표적 성격 & 매력:</strong> 친근함, 애교, 높은 사교성. 처음 만난 사람에게도 호감을 주며 다정다감한 케미를 자랑합니다.
+                    </p>
+                    <div class="guide-tag">#순둥이 #눈웃음 #다정다감 #친근함</div>
+                </article>
+
+                <article class="guide-card">
+                    <div class="guide-icon">🐱</div>
+                    <h3>2. 고양이상 (Cat Type)</h3>
+                    <p class="guide-text">
+                        <strong>외형적 특징:</strong> 살짝 올라간 눈꼬리, 쿨하고 날카로운 눈매, 뚜렷한 이목구비와 세련된 턱선이 매력입니다. 신비롭고 세련된 도시적인 아우라를 뿜어냅니다.
+                    </p>
+                    <p class="guide-text">
+                        <strong>대표적 성격 & 매력:</strong> 도도함, 츤데레, 독보적 존재감. 겉은 차가워 보이지만 가까워지면 차분하고 따뜻한 매력을 보여줍니다.
+                    </p>
+                    <div class="guide-tag">#도도함 #세련미 #오묘한눈매 #츤데레</div>
+                </article>
+
+                <article class="guide-card">
+                    <div class="guide-icon">🦊</div>
+                    <h3>3. 여우상 (Fox Type)</h3>
+                    <p class="guide-text">
+                        <strong>외형적 특징:</strong> 긴 눈매와 매혹적인 눈빛, 날렵한 코끝이 돋보입니다. 고양이상보다 조금 더 매혹적이고 샤프한 스타일이 인상적입니다.
+                    </p>
+                    <p class="guide-text">
+                        <strong>대표적 성격 & 매력:</strong> 영리함, 센스, 센스 있는 화술. 개성 넘치고 매력적인 스타일링이 잘 어울립니다.
+                    </p>
+                    <div class="guide-tag">#매혹적 #날렵함 #센스쟁이 #개성파</div>
+                </article>
+
+                <article class="guide-card">
+                    <div class="guide-icon">🦖</div>
+                    <h3>4. 공룡상 (Dinosaur Type)</h3>
+                    <p class="guide-text">
+                        <strong>외형적 특징:</strong> 뚜렷한 골격, 시원시원한 입매, 또렷한 핏을 가졌습니다. 남성적이고 세련된 아우라가 남다른 매력 포인트입니다.
+                    </p>
+                    <p class="guide-text">
+                        <strong>대표적 성격 & 매력:</strong> 시원함, 리더십, 믿음직함. 존재감이 확실하며 당당한 매력을 선사합니다.
+                    </p>
+                    <div class="guide-tag">#시원함 #볼드함 #입체적 #믿음직</div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Technical & Algorithm Information Section -->
+        <section class="glass-card algorithm-section mt-25" id="algorithm-section">
+            <div class="section-title-box">
+                <h2>🤖 AI 비전 인공지능 동작 원리</h2>
+                <p class="subtitle">컴퓨터 비전 기술과 머신러닝이 얼굴 이미지를 분석하는 프로세스</p>
+            </div>
+
+            <div class="algo-steps mt-20">
+                <div class="algo-step-card">
+                    <div class="step-num">01</div>
+                    <h4>얼굴 이목구비 랜드마크 추출</h4>
+                    <p>입력된 사진에서 눈, 코, 입, 턱선 등 주요 얼굴 좌표점을 추출합니다.</p>
+                </div>
+                <div class="algo-step-card">
+                    <div class="step-num">02</div>
+                    <h4>Teachable Machine 딥러닝 분석</h4>
+                    <p>수만 장의 동물상 학습 데이터셋과 비교하여 확률 가중치를 계산합니다.</p>
+                </div>
+                <div class="algo-step-card">
+                    <div class="step-num">03</div>
+                    <h4>100% 클라이언트 사이드 연산</h4>
+                    <p>서버 전송 없이 사용자의 브라우저 메모리 안에서만 안전하게 실시간 처리됩니다.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ===== MAKEUP SECTION ===== -->
-        <section class="content-section alt-bg" id="section-makeup">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">💄 동물상별 메이크업 & 스타일링 팁</h2>
-                    <p class="section-desc">내 동물상을 살리거나, 반대 유형으로 변신하는 전문가급 메이크업 팁을 알아보세요</p>
-                </div>
+        <!-- Frequently Asked Questions (FAQ Section) -->
+        <section class="glass-card faq-section mt-25" id="faq-section">
+            <div class="section-title-box">
+                <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+                <p class="subtitle">서비스 이용 중 궁금하신 사항을 안내해 드립니다.</p>
+            </div>
 
-                <div class="makeup-tabs-nav">
-                    <button class="makeup-tab active" data-type="dog">🐶 강아지상 살리기</button>
-                    <button class="makeup-tab" data-type="cat">🐱 고양이상 살리기</button>
-                    <button class="makeup-tab" data-type="dog-to-cat">🔄 강아지→고양이</button>
-                    <button class="makeup-tab" data-type="cat-to-dog">🔄 고양이→강아지</button>
-                </div>
-
-                <div class="makeup-content" id="makeup-dog">
-                    <div class="makeup-grid">
-                        <div class="makeup-item">
-                            <div class="makeup-step">01</div>
-                            <h4>베이스 메이크업</h4>
-                            <p>밝고 화사한 피부 연출이 핵심. 핑크 계열 언더톤의 파운데이션으로 건강하고 생기 있는 베이스를 만들고, 핑크·피치 톤 블러셔를 볼 중앙에 동그랗게 올려 귀여운 인상을 강조하세요.</p>
-                        </div>
-                        <div class="makeup-item">
-                            <div class="makeup-step">02</div>
-                            <h4>눈 메이크업</h4>
-                            <p>눈꼬리를 자연스럽게 아래로 내린 듯 연출하는 것이 포인트. 아이라이너는 눈 중앙에 두껍게, 눈꼬리는 얇게 내리듯 그리세요. 갈색 계열 섀도우로 부드럽게 음영을 주고, 아랫 속눈썹을 강조하면 강아지 눈망울이 완성됩니다.</p>
-                        </div>
-                        <div class="makeup-item">
-                            <div class="makeup-step">03</div>
-                            <h4>립 메이크업</h4>
-                            <p>입술 라인을 선명하게 그리기보다 코럴·오렌지·핑크 계열의 틴트나 립스틱을 부드럽게 블러링하듯 발라주세요. 야무지게 모인 작은 입술보다는 풍성하고 부드러운 느낌의 립이 강아지상에 어울립니다.</p>
-                        </div>
-                        <div class="makeup-item">
-                            <div class="makeup-step">04</div>
-                            <h4>헤어 스타일</h4>
-                            <p>레이어드 커트로 부드럽게 풀어헤친 스타일이 잘 어울립니다. 앞머리는 둥글게 내리거나 흘러내리는 긴 앞머리를 연출하면 더욱 친근하고 사랑스러운 이미지가 완성됩니다. 펌을 이용한 웨이브 스타일도 추천합니다.</p>
-                        </div>
+            <div class="faq-list mt-20">
+                <details class="faq-item">
+                    <summary class="faq-question">Q. 사진이 서버에 저장되거나 유출될 위험이 있나요?</summary>
+                    <div class="faq-answer">
+                        <p><strong>A. 절대 저장되지 않습니다!</strong> 본 서비스는 Google TensorFlow.js 기술을 활용하여 모든 AI 분석 작업을 사용자의 웹 브라우저 내에서 100% 진행합니다. 사진 파일은 외부 서버로 전송되거나 저장되지 않으므로 안심하고 이용하셔도 됩니다.</p>
                     </div>
-                </div>
+                </details>
 
-                <div class="makeup-content hidden" id="makeup-cat">
-                    <div class="makeup-grid">
-                        <div class="makeup-item">
-                            <div class="makeup-step">01</div>
-                            <h4>베이스 메이크업</h4>
-                            <p>매끄럽고 세련된 피부 표현이 핵심. 세미 매트 혹은 새틴 타입의 파운데이션으로 고급스러운 피부 텍스처를 만들고, 자연스러운 음영 컨투어링으로 갸름하고 또렷한 얼굴형을 강조하세요.</p>
-                        </div>
-                        <div class="makeup-item">
-                            <div class="makeup-step">02</div>
-                            <h4>눈 메이크업 (캣츠아이)</h4>
-                            <p>고양이상의 핵심은 눈꼬리를 위로 올려 그리는 캣츠아이 라이너입니다. 아이라이너로 눈꼬리를 45도 위로 뻗어 올리고, 짙은 색 섀도우로 강렬하게 음영을 줍니다. 언더라인은 눈 뒤쪽에만 살짝 그려 눈이 더 길어 보이게 연출하세요.</p>
-                        </div>
-                        <div class="makeup-item">
-                            <div class="makeup-step">03</div>
-                            <h4>립 메이크업</h4>
-                            <p>또렷하고 선명한 립 라인이 포인트. 버건디, 딥레드, 쿨톤 핑크 계열의 컬러로 립 라인을 정확하게 따고 안을 채워 넣어 세련되고 강렬한 인상을 만드세요. 입술산이 뚜렷하게 드러나는 스타일이 고양이상의 도도함을 극대화합니다.</p>
-                        </div>
-                        <div class="makeup-item">
-                            <div class="makeup-step">04</div>
-                            <h4>헤어 스타일</h4>
-                            <p>볼륨감 있는 스트레이트나 끝을 살짝 안으로 말아 넣은 세미 스트레이트 스타일이 잘 어울립니다. 사이드 파트나 딥 파트로 이마를 드러내면 더욱 세련되고 도도한 인상이 완성됩니다. 쇼트 커트나 탄탄하게 묶은 포니테일도 잘 어울립니다.</p>
-                        </div>
+                <details class="faq-item">
+                    <summary class="faq-question">Q. 어떤 사진을 올려야 가장 정확한 결과가 나오나요?</summary>
+                    <div class="faq-answer">
+                        <p>A. 정면을 바라보고 이목구비가 또렷하게 나온 밝은 사진일수록 정확도가 높습니다. 과도한 필터나 마스크, 선글라스 착용 사진은 정확도가 떨어질 수 있습니다.</p>
                     </div>
-                </div>
+                </details>
 
-                <div class="makeup-content hidden" id="makeup-dog-to-cat">
-                    <div class="conversion-tips">
-                        <div class="conv-header">
-                            <span>🐶 → 🐱</span>
-                            <h3>강아지상이 고양이상으로 변신하는 메이크업 전략</h3>
-                        </div>
-                        <div class="conv-list">
-                            <div class="conv-item"><span class="conv-num">1</span><p><strong>눈꼬리를 올려라!</strong> 캣츠아이 라이너로 눈꼬리를 대각선 위로 뻗어 올리는 것이 가장 효과적입니다. 강아지상 특유의 처진 눈꼬리를 교정하는 핵심 기법입니다.</p></div>
-                            <div class="conv-item"><span class="conv-num">2</span><p><strong>컨투어링으로 갸름한 턱선을!</strong> 강아지상의 동글동글한 얼굴형을 갸름하게 만들기 위해 관자놀이, 볼뼈 아래, 턱 주변에 어두운 쉐이딩을 넣어주세요.</p></div>
-                            <div class="conv-item"><span class="conv-num">3</span><p><strong>블러셔 위치를 올려라!</strong> 강아지상에서 볼 중앙에 올리던 블러셔를 광대뼈 아래쪽으로 위치를 바꾸면 더 날카롭고 세련된 이미지가 됩니다.</p></div>
-                            <div class="conv-item"><span class="conv-num">4</span><p><strong>립 라인을 또렷하게!</strong> 부드럽게 번지게 발랐던 립을 입술 라인을 또렷하게 따고 딥 컬러로 채워 넣어 보다 도도한 인상을 만드세요.</p></div>
-                        </div>
+                <details class="faq-item">
+                    <summary class="faq-question">Q. 서비스 이용료는 무료인가요?</summary>
+                    <div class="faq-answer">
+                        <p>A. 네, 회원가입 없이 누구나 100% 무료로 이용하실 수 있는 서비스입니다.</p>
                     </div>
-                </div>
+                </details>
 
-                <div class="makeup-content hidden" id="makeup-cat-to-dog">
-                    <div class="conversion-tips">
-                        <div class="conv-header">
-                            <span>🐱 → 🐶</span>
-                            <h3>고양이상이 강아지상으로 변신하는 메이크업 전략</h3>
-                        </div>
-                        <div class="conv-list">
-                            <div class="conv-item"><span class="conv-num">1</span><p><strong>눈꼬리를 내려라!</strong> 올라간 눈꼬리를 커버하기 위해 아이라이너의 꼬리 부분을 아래로 살짝 내려 그립니다. 아이라이너를 쓰지 않거나 최소화하는 것도 좋습니다.</p></div>
-                            <div class="conv-item"><span class="conv-num">2</span><p><strong>동그란 원형 블러셔!</strong> 광대뼈 아래에 쉐이딩 대신, 사과볼처럼 볼 중앙 위에 핑크·피치 계열 블러셔를 동그랗게 올려주면 귀엽고 생기 있는 이미지로 바뀝니다.</p></div>
-                            <div class="conv-item"><span class="conv-num">3</span><p><strong>갈색 계열 섀도우로 부드럽게!</strong> 강렬한 검은색이나 어두운 색 섀도우 대신, 갈색이나 피치 계열 섀도우로 눈두덩을 부드럽게 채워주어 온화한 눈매를 연출합니다.</p></div>
-                            <div class="conv-item"><span class="conv-num">4</span><p><strong>코럴·오렌지 립으로 화사하게!</strong> 강렬한 레드·버건디 립 대신 코럴, 오렌지, 연핑크 계열의 틴트를 블러링하듯 발라주면 강아지상 특유의 생기가 살아납니다.</p></div>
-                        </div>
+                <details class="faq-item">
+                    <summary class="faq-question">Q. 결과가 매번 다르게 나올 수 있나요?</summary>
+                    <div class="faq-answer">
+                        <p>A. 사진의 조명, 표정, 각도에 따라 이목구비 랜드마크 비율이 달라져 결과 퍼센티지가 미세하게 달라질 수 있습니다. 가장 자연스러운 미소의 정면 사진으로 테스트해보세요!</p>
                     </div>
-                </div>
+                </details>
             </div>
         </section>
 
-        <!-- ===== LOTTO SECTION ===== -->
-        <section class="content-section" id="section-lotto">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">🎰 로또 6/45 행운 번호 생성기</h2>
-                    <p class="section-desc">오늘의 행운 번호를 뽑아보세요! 동물상 테스트 후 나만의 행운 번호도 함께 챙기세요.</p>
+        <!-- Formspree Partnership Inquiry Section -->
+        <section class="glass-card partner-section mt-25" id="partner-section">
+            <div class="card-title-row">
+                <div>
+                    <h2>🤝 제휴 및 비즈니스 문의</h2>
+                    <p class="subtitle">마케팅, 서비스 제휴, 개발 문의 등 제휴 요청을 보내주시면 담당자가 확인 후 답변드립니다.</p>
                 </div>
+                <span class="tag-badge accent">Formspree 연동</span>
+            </div>
 
-                <div class="lotto-card">
-                    <div class="lotto-header">
-                        <div>
-                            <h3>행운의 번호 뽑기</h3>
-                            <p>완전 무작위 알고리즘으로 1~45에서 중복 없이 6개의 번호를 생성합니다</p>
-                        </div>
-                        <div class="lotto-controls">
-                            <label for="lotto-game-count">게임 수:</label>
-                            <select id="lotto-game-count" class="select-modern">
-                                <option value="1">1 게임</option>
-                                <option value="5" selected>5 게임 (A~E)</option>
-                                <option value="10">10 게임</option>
-                            </select>
-                        </div>
+            <form id="partner-form" action="https://formspree.io/f/mojodgve" method="POST" class="partner-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="partner-name">담당자 성함 <span class="required">*</span></label>
+                        <input type="text" id="partner-name" name="name" class="modern-input" placeholder="홍길동" required>
                     </div>
 
-                    <div class="lotto-actions">
-                        <button class="btn-lotto" id="btn-draw-lotto">⚡ 번호 추첨하기</button>
-                        <button class="btn-lotto-copy" id="btn-copy-lotto">📋 복사하기</button>
+                    <div class="form-group">
+                        <label for="partner-company">회사 / 소속명 <span class="required">*</span></label>
+                        <input type="text" id="partner-company" name="company" class="modern-input" placeholder="(주) 에이아이랩" required>
                     </div>
 
-                    <div class="lotto-results" id="lotto-results-container">
-                        <div class="lotto-empty">
-                            <span>🎱</span>
-                            <p>버튼을 눌러 이번 주 행운 번호를 생성해보세요!</p>
-                        </div>
+                    <div class="form-group">
+                        <label for="partner-email">이메일 주소 <span class="required">*</span></label>
+                        <input type="email" id="partner-email" name="email" class="modern-input" placeholder="contact@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partner-phone">연락처</label>
+                        <input type="tel" id="partner-phone" name="phone" class="modern-input" placeholder="010-1234-5678">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="partner-category">제휴 유형 <span class="required">*</span></label>
+                        <select id="partner-category" name="category" class="modern-select full-width-select" required>
+                            <option value="마케팅/광고 제휴">📢 마케팅 / 광고 제휴</option>
+                            <option value="서비스/콘텐츠 제휴">🤝 서비스 / 콘텐츠 제휴</option>
+                            <option value="개발/기술 제휴">💻 개발 / 기술 제휴</option>
+                            <option value="기타 문의">💡 기타 문의</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="partner-message">제휴 문의 내용 <span class="required">*</span></label>
+                        <textarea id="partner-message" name="message" class="modern-textarea" placeholder="제휴 내용 및 제안 사항을 상세히 작성해 주세요." required></textarea>
                     </div>
                 </div>
 
-                <div class="lotto-notice">
-                    <p>⚠️ <strong>안내:</strong> 본 서비스에서 제공하는 로또 번호는 순수한 무작위 알고리즘으로 생성되며, 당첨을 보장하거나 실제 추첨 결과를 예측하지 않습니다. 복권 구매는 성인(만 19세 이상)만 가능하며, 과도한 구매는 자제하시기 바랍니다.</p>
+                <!-- Formspree ID Info -->
+                <div class="formspree-config-bar">
+                    <span class="status-dot green"></span>
+                    <span class="endpoint-label">Formspree 라이브 연동: <strong>https://formspree.io/f/mojodgve</strong></span>
                 </div>
+
+                <div class="form-footer align-right mt-15">
+                    <button type="submit" class="btn btn-primary" id="btn-submit-partner">
+                        <span>📤 제휴 문의 보내기</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Disqus Comments Section -->
+        <section class="glass-card comments-section mt-25" id="comments-section">
+            <div class="card-title-row">
+                <div>
+                    <h2>💬 사용자 커뮤니티 & 댓글</h2>
+                    <p class="subtitle">동물상 테스트 결과나 소감을 커뮤니티에 공유해 보세요!</p>
+                </div>
+                <span class="tag-badge accent">Disqus 연동</span>
+            </div>
+            <div class="disqus-container mt-20">
+                <div id="disqus_thread"></div>
+                <script>
+                    (function() {
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://productbuilder-1hmlw0f75b.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </div>
         </section>
 
-        <!-- ===== FAQ SECTION ===== -->
-        <section class="content-section alt-bg" id="section-faq">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">❓ 자주 묻는 질문 (FAQ)</h2>
-                    <p class="section-desc">PetFace AI 서비스에 대해 궁금한 점들을 모아봤습니다</p>
-                </div>
+        <!-- Bottom AdSense Banner -->
+        <div class="ad-bottom-wrapper mt-25">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8733789079099371"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
 
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-q" data-faq="0">
-                            <span>Q. 사진을 업로드하면 서버에 저장되나요? 개인정보가 걱정됩니다.</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-a" id="faq-0">
-                            <p><strong>아니오, 절대 저장되지 않습니다.</strong> 본 서비스에서 사용하는 AI 분석 엔진(TensorFlow.js)은 사용자의 웹 브라우저 내에서만 실행됩니다. 업로드된 사진은 분석 후 메모리에서 즉시 삭제되며, 저희 서버를 포함한 어떠한 외부 서버에도 전송·저장되지 않습니다. 안심하고 사용하셔도 됩니다.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-q" data-faq="1">
-                            <span>Q. AI 분석 결과가 항상 정확한가요?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-a" id="faq-1">
-                            <p>AI 모델은 학습 데이터를 기반으로 <strong>통계적 확률</strong>을 계산하므로, 개인의 조명 환경, 각도, 표정, 메이크업 유무 등에 따라 결과가 달라질 수 있습니다. 재미와 흥미를 위한 엔터테인먼트 서비스임을 참고해주시고, 여러 사진으로 테스트해 보시면 더욱 신뢰성 있는 결과를 얻을 수 있습니다. 정면에서 조명이 밝을 때 촬영한 사진이 가장 정확합니다.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-q" data-faq="2">
-                            <span>Q. 웹캠 기능은 어떻게 사용하나요?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-a" id="faq-2">
-                            <p>AI 테스트 섹션에서 <strong>'웹캠 촬영'</strong> 탭을 클릭하면 브라우저가 카메라 사용 권한을 요청합니다. 허용하면 실시간 카메라 화면이 나타나며, '지금 이 얼굴로 분석하기' 버튼을 클릭하면 그 순간의 얼굴로 분석이 진행됩니다. 마찬가지로 모든 처리는 브라우저 내부에서만 이루어집니다.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-q" data-faq="3">
-                            <span>Q. 동물상의 종류가 강아지상, 고양이상 두 가지뿐인가요?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-a" id="faq-3">
-                            <p>현재 서비스는 강아지상과 고양이상 두 가지 카테고리를 기반으로 분석하며, 두 유형의 비율이 비슷하게 나오는 경우 '황금비율 개냥이상'으로 분류됩니다. 향후 여우상, 곰상, 토끼상 등 더 다양한 동물상 유형으로 서비스를 확장할 계획입니다. 많은 기대와 관심 부탁드립니다!</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-q" data-faq="4">
-                            <span>Q. 모바일에서도 이용할 수 있나요?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-a" id="faq-4">
-                            <p>네, 스마트폰(iOS/Android)과 태블릿을 포함한 모든 최신 모바일 기기에서 이용 가능합니다. 모바일에서도 사진 업로드와 카메라 촬영 모두 지원합니다. 다만 최초 AI 모델 로드 시 데이터가 다운로드되므로 Wi-Fi 환경을 권장합니다.</p>
-                        </div>
-                    </div>
+        <!-- Footer Section (AdSense Compliance: Privacy Policy & Terms) -->
+        <footer class="main-footer glass-panel mt-25">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>ANIMAL<span class="accent-text">AI</span> LAB</h3>
+                    <p>인공지능 비전 머신러닝 기술로 선사하는 차세대 미디어 서비스 포털입니다.</p>
+                    <p class="copyright">© 2026 AnimalAI Lab. All rights reserved. Google AdSense Authorized Publisher (ca-pub-8733789079099371)</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- ===== PARTNER SECTION ===== -->
-        <section class="content-section" id="partner-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">🤝 제휴 및 비즈니스 문의</h2>
-                    <p class="section-desc">마케팅, 콘텐츠 제휴, 기술 협력 등 모든 비즈니스 문의를 받고 있습니다</p>
-                </div>
-
-                <div class="partner-layout">
-                    <div class="partner-info">
-                        <h3>PetFace AI와 함께하세요</h3>
-                        <p>PetFace AI는 AI 기술을 활용한 엔터테인먼트 플랫폼으로, 뷰티, 엔터테인먼트, 라이프스타일 브랜드와의 다양한 형태의 협업을 환영합니다.</p>
-                        <ul class="partner-types">
-                            <li><span>📢</span> 마케팅 / 광고 제휴</li>
-                            <li><span>🤝</span> 서비스 / 콘텐츠 제휴</li>
-                            <li><span>💻</span> 개발 / 기술 협력</li>
-                            <li><span>✍️</span> 콘텐츠 기고 및 협업</li>
-                        </ul>
-                    </div>
-
-                    <form id="partner-form" action="https://formspree.io/f/mojodgve" method="POST" class="partner-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="partner-name">담당자 성함 <span class="req">*</span></label>
-                                <input type="text" id="partner-name" name="name" placeholder="홍길동" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="partner-company">회사 / 소속 <span class="req">*</span></label>
-                                <input type="text" id="partner-company" name="company" placeholder="(주) 회사명" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="partner-email">이메일 주소 <span class="req">*</span></label>
-                                <input type="email" id="partner-email" name="email" placeholder="contact@example.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="partner-phone">연락처</label>
-                                <input type="tel" id="partner-phone" name="phone" placeholder="010-0000-0000">
-                            </div>
-                        </div>
-                        <div class="form-group full">
-                            <label for="partner-category">제휴 유형 <span class="req">*</span></label>
-                            <select id="partner-category" name="category" required>
-                                <option value="">-- 제휴 유형 선택 --</option>
-                                <option value="마케팅/광고 제휴">📢 마케팅 / 광고 제휴</option>
-                                <option value="서비스/콘텐츠 제휴">🤝 서비스 / 콘텐츠 제휴</option>
-                                <option value="개발/기술 협력">💻 개발 / 기술 협력</option>
-                                <option value="기타 문의">💡 기타 문의</option>
-                            </select>
-                        </div>
-                        <div class="form-group full">
-                            <label for="partner-message">문의 내용 <span class="req">*</span></label>
-                            <textarea id="partner-message" name="message" rows="5" placeholder="제휴 내용이나 제안 사항을 상세히 작성해 주세요." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit" id="btn-submit-partner">
-                            📤 제휴 문의 보내기
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== COMMENTS SECTION ===== -->
-        <section class="content-section alt-bg" id="comments-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">💬 커뮤니티 댓글</h2>
-                    <p class="section-desc">테스트 결과나 소감을 자유롭게 공유해보세요!</p>
-                </div>
-                <div class="comments-wrap">
-                    <div id="disqus_thread"></div>
-                    <script>
-                        (function() {
-                            var d = document, s = d.createElement('script');
-                            s.src = 'https://productbuilder-1hmlw0f75b.disqus.com/embed.js';
-                            s.setAttribute('data-timestamp', +new Date());
-                            (d.head || d.body).appendChild(s);
-                        })();
-                    </script>
-                    <noscript>댓글을 보려면 JavaScript를 활성화해주세요. <a href="https://disqus.com/?ref_noscript">Disqus 제공</a></noscript>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== FOOTER ===== -->
-        <footer class="site-footer">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-brand">
-                        <div class="footer-logo">🐾 PetFace AI</div>
-                        <p>AI 기반 동물상 무료 분석 서비스.<br>최신 딥러닝 기술로 나만의 동물상을 찾아보세요.</p>
-                    </div>
-                    <div class="footer-links-col">
-                        <h4>서비스</h4>
-                        <ul>
-                            <li><a href="#section-test">AI 동물상 테스트</a></li>
-                            <li><a href="#section-guide">동물상 가이드</a></li>
-                            <li><a href="#section-celeb">연예인 동물상</a></li>
-                            <li><a href="#section-makeup">스타일링 팁</a></li>
-                            <li><a href="#section-lotto">로또 추첨기</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-col">
-                        <h4>정보</h4>
-                        <ul>
-                            <li><a href="#section-faq">자주 묻는 질문</a></li>
-                            <li><a href="#partner-section">제휴 문의</a></li>
-                            <li><a href="#privacy">개인정보처리방침</a></li>
-                            <li><a href="#terms">이용약관</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="footer-policy" id="privacy">
-                    <h4>개인정보처리방침 요약</h4>
-                    <p>본 사이트(PetFace AI)는 사용자의 개인정보를 중요시하며 관련 법률 및 Google AdSense 정책을 준수합니다. ① 얼굴 이미지는 브라우저 내에서만 처리되며 서버로 전송 또는 저장되지 않습니다. ② 제휴 문의 폼을 통해 수집된 정보(이름, 이메일, 연락처)는 문의 응답 목적으로만 사용되며 제3자에게 제공되지 않습니다. ③ Google AdSense 광고 게재를 위해 Google이 쿠키를 사용할 수 있으며, 사용자는 브라우저 설정에서 쿠키를 거부할 수 있습니다. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 개인정보처리방침 보기 →</a></p>
-                </div>
-
-                <div class="footer-policy" id="terms">
-                    <h4>이용약관 요약</h4>
-                    <p>본 서비스는 엔터테인먼트 목적의 AI 분석 도구로, 분석 결과는 통계적 확률을 기반으로 하며 실제 외모 판단의 근거로 사용할 수 없습니다. 서비스 이용으로 인해 발생하는 분쟁에 대해 운영자는 책임을 지지 않습니다. 로또 번호 생성 서비스는 당첨을 보장하지 않으며 과도한 복권 구매를 권장하지 않습니다.</p>
-                </div>
-
-                <div class="footer-bottom">
-                    <p>© 2026 PetFace AI. All rights reserved. Powered by Google Teachable Machine & TensorFlow.js</p>
-                    <p class="footer-disclaimer">본 사이트의 모든 AI 분석 결과는 엔터테인먼트 목적으로만 제공됩니다.</p>
+                <div class="footer-links">
+                    <button class="footer-link-btn" id="btn-footer-privacy">개인정보 처리방침</button>
+                    <button class="footer-link-btn" id="btn-footer-terms">이용약관</button>
+                    <a href="#partner-section" class="footer-link-btn">제휴 문의</a>
+                    <a href="ads.txt" target="_blank" class="footer-link-btn">ads.txt 검증</a>
                 </div>
             </div>
         </footer>
     </div>
 
-    <!-- Toast -->
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <!-- Privacy Policy Modal -->
+    <div class="modal-overlay hidden" id="privacy-modal">
+        <div class="glass-card modal-content">
+            <div class="modal-header">
+                <h3>🔒 개인정보 처리방침 (Privacy Policy)</h3>
+                <button class="modal-close" id="btn-close-privacy">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>1. 개인정보의 수집 및 이용 목적</h4>
+                <p>본 서비스는 인공지능 기반 동물상 테스트를 제공하며, 사용자가 업로드한 모든 사진 데이터는 사용자의 웹 브라우저 내에서만 실시간으로 연산됩니다. 서버로 사진을 전송하거나 저장하지 않습니다.</p>
 
-    <!-- Back to top -->
-    <a href="#top" class="back-to-top" id="back-to-top" aria-label="맨 위로">↑</a>
+                <h4>2. 쿠키(Cookie) 및 제3자 광고 고지 (Google AdSense)</h4>
+                <p>본 사이트는 서비스 개선 및 광고 게재를 위해 제3자 서비스(Google AdSense 등)를 사용합니다. Google을 포함한 제3자 제공업체는 쿠키를 사용하여 사용자의 이전 방문 기록을 바탕으로 맞춤형 광고를 게재할 수 있습니다.</p>
+
+                <h4>3. 문의처</h4>
+                <p>개인정보 보호 관련 문의 사항은 하단의 제휴/문의 폼을 통해 언제든지 접수해주시기 바랍니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">메시지 내용</div>
 
     <script src="app.js"></script>
 </body>
