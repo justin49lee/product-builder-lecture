@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Teachable Machine Model URL
-    const MODEL_URL = 'https://teachablemachine.withgoogle.com/models/4IDAWlwtX/';
+    // Teachable Machine Model URL (Newly Trained Model)
+    const MODEL_URL = 'https://teachablemachine.withgoogle.com/models/VOgXJeS--/';
 
     let model = null;
     let webcam = null;
